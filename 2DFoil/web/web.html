@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html>
+    <style>
+        #container {
+            width: 300px;
+            height: 300px;
+            position: relative;
+            background: yellow;
+        }
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: red;
+        }
+    </style>
+
 <head>
-<title>Page Title</title>
+    <title>2D-foil</title>
 </head>
 <body>
 
@@ -48,18 +63,51 @@
     var ctx = c.getContext("2d");
     ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 0, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 30*Math.PI/180, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 30*Math.PI/90, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 30*Math.PI/60, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 30*Math.PI/30, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 2*Math.PI/3, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
     ctx.ellipse(500, 300, 150, 100, 5*Math.PI/6, 0, Math.PI * 2);
     ctx.stroke();
 </script>
 
 
-
-
+<!-- animation -->
+<p><button onclick="myMove()">Click Me</button></p> 
+<div id ="container">
+    <div id ="animate"></div>
+</div>
+<script>
+    function myMove() {
+        let id = null;
+        const elem = document.getElementById("animate");
+        let pos = 0;
+        clearInterval(id);
+        id = setInterval(frame, 5);
+        function frame() {
+        if (pos >= 250) {
+            clearInterval(id);
+        } else {
+            pos++;
+            elem.style.top = pos + 'px';
+            elem.style.left = pos + 'px';
+        }
+        }
+    }
+</script>
 
 
 </body>
